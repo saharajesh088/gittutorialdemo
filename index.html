@@ -8,34 +8,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>JS For Beginners</h1>
-    </header>
-
-    <section class="container">
-      <form id="my-form">
-        <h1>Add User</h1>
-        <div class="msg"></div>
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" id="name" />
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input type="text" id="email" />
-        </div>
-        <input class="btn" type="submit" value="Submit" />
-      </form>
-
-      <ul id="users"></ul>
-
-      <!-- <ul class="items">
-        <li class="item">Item 1</li>
-        <li class="item">Item 2</li>
-        <li class="item">Item 3</li>
-      </ul> -->
-    </section>
-
+    <form onsubmit="saveToLocalStorage(event)">
+    <label>Name</label>
+    <input type="text" name="username" required/>
+    <label>Email Id</label>
+    <input type="email" name="emailId" required/>
+    <label>Phone No</label>
+    <input type="tel" name="phonenumber" />
+    <button> Submit </button>
+</form>
     <script src="main.js"></script>
   </body>
 </html>

@@ -1,25 +1,34 @@
-function saveToStorage(event){
-    event.preventDefault();
-    let form = document.getElementById('form');
-    let name = document.getElementById("text").value;
-    let email = document.getElementById("email").value;
-    let obj = {
-        name:name,
-        email:email
-    }
-    let objSerialization = JSON.stringify(obj);
-    localStorage.setItem(obj.email,objSerialization);
+function saveToLocalStorage(event) {
+  event.preventDefault();
+  const name = event.target.username.value;
+  const email = event.target.emailId.value;
+  const phoneNumber = event.target.phonenumber.value;
+  // localStorage.setItem('name',name);
+  // localStorage.setItem('email',email);
+  // localStorage.setItem('phonenumber', phoneNumber)
 
-    Object.keys(localStorage).forEach((key)=>{
-        console.log(JSON.parse(localStorage.getItem(key)));
-    });
-    userDetailsOnScreen(obj);
-
+  const obj = {
+    name,
+    email,
+    phoneNumber,
+  };
+  localStorage.setItem(obj.email, JSON.stringify(obj));
+  showUserOnScreen(obj);
 }
-function userDetailsOnScreen(user){
-    let items = document.getElementById("listOfItems");
-    let childHtml = `<li> ${user.name} - ${user.email} </li>`;
-    items.innerHTML = items.innerHTML + childHtml;
-    items.appendChild(li);
 
+function showUserOnScreen(obj) {
+  const parentELem = document.getElementById("listOfItems");
+  const childELem = document.createElement("li");
+  childELem.textContent = obj.name + "-" + obj.email + "-" + obj.phoneNumber;
+
+  const deleteButton = document.createElement("input");
+  deleteButton.type = "button";
+  deleteButton.value = "Delete";
+  deleteButton.onclick = () => {
+    localStorage.removeItem(obj.email);
+    parentELem.removeChild(childELem);
+  };
+  childELem.appendChild(deleteButton);
+  parentELem.appendChild(childELem);
+  //parentELem.innerHTML = '<li> $(obj.name) - $(obj.email) - $(obj.phoneNumber)</li>'
 }
