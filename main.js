@@ -20,15 +20,27 @@ function showUserOnScreen(obj) {
   const parentELem = document.getElementById("listOfItems");
   const childELem = document.createElement("li");
   childELem.textContent = obj.name + "-" + obj.email + "-" + obj.phoneNumber;
+}
 
-  const deleteButton = document.createElement("input");
-  deleteButton.type = "button";
-  deleteButton.value = "Delete";
-  deleteButton.onclick = () => {
-    localStorage.removeItem(obj.email);
-    parentELem.removeChild(childELem);
-  };
-  childELem.appendChild(deleteButton);
-  parentELem.appendChild(childELem);
-  //parentELem.innerHTML = '<li> $(obj.name) - $(obj.email) - $(obj.phoneNumber)</li>'
+//   const deleteButton = document.createElement("input");
+//   deleteButton.type = "button";
+//   deleteButton.value = "Delete";
+//   deleteButton.onclick = () => {
+//     localStorage.removeItem(obj.email);
+//     parentELem.removeChild(childELem);
+//   };
+//   childELem.appendChild(deleteButton);
+//   parentELem.appendChild(childELem);
+//   //parentELem.innerHTML = '<li> $(obj.name) - $(obj.email) - $(obj.phoneNumber)</li>'
+// }
+
+const editButton = document.createElement("input");
+editButton.type = "button";
+editButton.value = "Edit";
+editButton.onclick = () => {
+  localStorage.removeItem(obj.email);
+  parentELem.removeChild(childELem);
+  document.getElementById("usernameInputTag").value = obj.name
+  document.getElementById("emailInputTag").value = obj.email
+  document.getElementById("phoneNumberInputTag").value = obj.phoneNumber
 }
